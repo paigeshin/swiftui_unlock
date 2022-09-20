@@ -1,9 +1,42 @@
 # swiftui_unlock
 
 ```swift 
-    @State private var draggedOffset: CGSize = .zero
-    @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
+@State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
     @State private var buttonOffset: CGFloat = 0
+
+                // MARK: - FOOTER
+                
+                ZStack {
+                    // PARTS OF THE CUSTOM BUTTON
+                    
+                    // 1. BACKGROUND (STATIC)
+                    
+                    Capsule()
+                        .fill(Color.white.opacity(0.2))
+                    
+                    Capsule()
+                        .fill(Color.white.opacity(0.2))
+                        .padding(8)
+                    
+                    // 2. CALL-TO-ACTION (STATIC)
+                    
+                    Text("Get Started")
+                        .font(.system(.title3, design: .rounded))
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .offset(x: 20)
+                    
+                    // 3. CAPSULE (DYNAMIC WIDTH)
+                    
+                    HStack {
+                        Capsule()
+                            .fill(Color("ColorRed"))
+                            .frame(width: buttonOffset + 80)
+                        
+                        Spacer()
+                    }
+                    
+                    // 4. CIRCLE (DRAGGABLE)
                     
                     HStack {
                         ZStack {
